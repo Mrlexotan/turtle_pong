@@ -3,7 +3,7 @@ import turtle
 
 # Janela do jogo
 window = turtle.Screen()
-window.setup(1200, 800)
+window.setup(1280, 720)
 window.title("Turtle Pong")
 window.bgcolor("black")
 
@@ -33,6 +33,8 @@ ball.shape("circle")
 ball.color("white")
 ball.goto(0, 0)
 ball.shapesize(1, 1)
+ball.velx = 2
+ball.vely = 2
 
 
 # define o movimento de subida do player1
@@ -74,6 +76,27 @@ def down2():
     if player2.ycor() <= -320:
         player2.sety(-320)
 
+def move_ball():
+    ball.setx(ball.xcor() + ball.velx)
+    ball.sety(ball.ycor() + ball.vely)
+    
+    if ball.xcor() > 600:
+        ball.velx *= -1
+    elif ball.xcor() < -600:
+        ball.velx *= -1
+
+    if ball.ycor() > 350:
+        ball.sety(350)
+        ball.vely *= -1
+
+    """elif ball.ycor() > -350:
+        ball.sety(-350)
+        ball.vely *= -1"""
+
+    pass
+
+
+
 
 # adicionando os controles do player1
 window.listen()
@@ -87,5 +110,7 @@ window.onkeypress(down2, "k")
 
 # Mantém a janela aberta
 loop = True
+
 while loop:
+    move_ball()
     window.update()
