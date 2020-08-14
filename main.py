@@ -25,6 +25,14 @@ player2.color("white")
 player2.goto(500, 0)
 player2.shapesize(8, 1)
 
+#ball
+ball = turtle.Turtle()
+ball.penup()
+ball.speed(0)
+ball.shape("circle")
+ball.color("white")
+ball.goto(0, 0)
+ball.shapesize(1, 1)
 
 #Mantém a janela aberta
 loop = True
