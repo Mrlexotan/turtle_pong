@@ -89,9 +89,9 @@ def move_ball():
         ball.sety(350)
         ball.vely *= -1
 
-    """elif ball.ycor() > -350:
+    elif ball.ycor() < -350:
         ball.sety(-350)
-        ball.vely *= -1"""
+        ball.vely *= -1
 
     pass
 
