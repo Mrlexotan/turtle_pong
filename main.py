@@ -36,6 +36,17 @@ ball.shapesize(1, 1)
 ball.velx = 2
 ball.vely = 2
 
+#score
+score = turtle.Turtle()
+score.speed(0)
+score.penup()
+score.shape("square")
+score.hideturtle()
+score.color("white")
+score.goto(0, 300)
+score.a = 0
+score.b = 0
+score.write(f"Score A: {score.a}   Score B:  {score.b}", align="center", font=("Arial", 24, "normal"))
 
 # define o movimento de subida do player1
 def up():
@@ -76,14 +87,25 @@ def down2():
     if player2.ycor() <= -320:
         player2.sety(-320)
 
+
+def placar():
+    ball.goto(0, 0)
+    score.clear()
+    ball.velx *= -1
+    score.write(f"Score A: {score.a}   Score B:  {score.b}", align="center", font=("Arial", 24, "normal"))
+    pass
+
+
 def move_ball():
     ball.setx(ball.xcor() + ball.velx)
     ball.sety(ball.ycor() + ball.vely)
     
-    if ball.xcor() > 600:
-        ball.velx *= -1
-    elif ball.xcor() < -600:
-        ball.velx *= -1
+    if ball.xcor() > 640:
+        score.a += 1
+        placar()
+    elif ball.xcor() < -640:
+        score.b += 1
+        placar()
 
     if ball.ycor() > 350:
         ball.sety(350)
@@ -92,11 +114,6 @@ def move_ball():
     elif ball.ycor() < -350:
         ball.sety(-350)
         ball.vely *= -1
-
-    pass
-
-
-
 
 # adicionando os controles do player1
 window.listen()
