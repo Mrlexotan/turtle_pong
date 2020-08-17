@@ -5,7 +5,7 @@ import turtle
 window = turtle.Screen()
 window.setup(1280, 720)
 window.title("Turtle Pong")
-window.bgcolor("black")
+window.bgpic("fundo.gif")
 
 # player1
 player1 = turtle.Turtle()
