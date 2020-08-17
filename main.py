@@ -115,6 +115,16 @@ def move_ball():
         ball.sety(-350)
         ball.vely *= -1
 
+def colision():
+    if ball.xcor() < -480 and ball.ycor() < player1.ycor() +90 and ball.ycor() > player1.ycor() -90:
+        ball.setx(-480)
+        ball.velx *= -1
+
+    if ball.xcor() > 480 and ball.ycor() < player2.ycor() +90 and ball.ycor() > player2.ycor() -90:
+        ball.setx(480)
+        ball.velx *= -1
+
+
 # adicionando os controles do player1
 window.listen()
 window.onkeypress(up, "w")
@@ -130,4 +140,5 @@ loop = True
 
 while loop:
     move_ball()
+    colision()
     window.update()
